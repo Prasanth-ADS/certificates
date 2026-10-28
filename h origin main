@@ -1,0 +1,21 @@
+warning: in the working copy of 'verify/HOB-8973-P988/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'verify/NOC-HM26-D9R2/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'verify/NOC-LJ26-B6W1/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'verify/NOC-NW26-X5Q8/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'verify/NOC-PD26-K7M4/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'verify/NOC-PS26-A3V7/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'verify/NOV-4566-345/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'verify/NOV-5645-3333/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'verify/NOV1-6767/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'verify/SOC-9789-4444/index.html', LF will be replaced by CRLF the next time Git touches it
+ verify/HOB-8973-P988/index.html | 71 [32m++++++++++++++++++++++++++++++++++[m[31m---[m
+ verify/NOC-HM26-D9R2/index.html | 71 [32m++++++++++++++++++++++++++++++++++[m[31m---[m
+ verify/NOC-LJ26-B6W1/index.html | 71 [32m++++++++++++++++++++++++++++++++++[m[31m---[m
+ verify/NOC-NW26-X5Q8/index.html | 71 [32m++++++++++++++++++++++++++++++++++[m[31m---[m
+ verify/NOC-PD26-K7M4/index.html | 77 [32m++++++++++++++++++++++++++++++++++[m[31m-------[m
+ verify/NOC-PS26-A3V7/index.html | 71 [32m++++++++++++++++++++++++++++++++++[m[31m---[m
+ verify/NOV-4566-345/index.html  | 71 [32m++++++++++++++++++++++++++++++++++[m[31m---[m
+ verify/NOV-5645-3333/index.html | 71 [32m++++++++++++++++++++++++++++++++++[m[31m---[m
+ verify/NOV1-6767/index.html     | 72 [32m+++++++++++++++++++++++++++++++++++[m[31m---[m
+ verify/SOC-9789-4444/index.html | 71 [32m++++++++++++++++++++++++++++++++++[m[31m---[m
+ 10 files changed, 667 insertions(+), 50 deletions(-)
