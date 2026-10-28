@@ -3,13 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Certificate Verification</title>
+  <meta name="referrer" content="no-referrer">
+  <title>Certificate Viewer</title>
   <style>
-    html, body { margin: 0; height: 100%; }
-    iframe { width: 100%; height: 100%; border: 0; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      background: #525659;
+      font-family: Arial, sans-serif;
+    }
+    #status {
+      color: white;
+      padding: 16px;
+      text-align: center;
+    }
+    #viewer {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 auto 12px;
+      background: white;
+    }
+    a { color: white; }
   </style>
 </head>
 <body>
-  <iframe src="../../shifna/SOC-9789-4444.pdf" title="Certificate PDF"></iframe>
+  <div id="status">Loading certificate...</div>
+  <main id="viewer"></main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    const pdfUrl = "../../shifna/SOC-9789-4444.pdf";
+    const status = document.getElementById("status");
+    const viewer = document.getElementById("viewer");
+
+    if (typeof pdfjsLib === "undefined") {
+      status.textContent = "The certificate viewer could not load. Check your internet connection.";
+    } else {
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+      pdfjsLib.getDocument(pdfUrl).promise.then(async pdf => {
+        status.textContent = "";
+
+        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+          const page = await pdf.getPage(pageNum);
+          const base = page.getViewport({ scale: 1 });
+          const scale = Math.min(window.innerWidth / base.width, 2);
+          const viewport = page.getViewport({ scale });
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+
+          canvas.width = Math.floor(viewport.width);
+          canvas.height = Math.floor(viewport.height);
+          viewer.appendChild(canvas);
+
+          await page.render({
+            canvasContext: context,
+            viewport: viewport
+          }).promise;
+        }
+      }).catch(error => {
+        console.error(error);
+        status.textContent = "Could not display the certificate. Try refreshing the page.";
+      });
+    }
+  </script>
 </body>
 </html>
